@@ -50,6 +50,7 @@
 
 \begin{poster}
 {
+columns=3,
 headerborder=closed, % Adds a border around the header of content boxes
 colspacing=1em, % Column spacing
 bgColorOne=white, % Background color for the gradient on the left side of the poster
@@ -111,9 +112,8 @@ where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix.
 %	RESULTS 1
 %----------------------------------------------------------------------------------------
 
-\headerbox{SIFT Features}{name=results,column=2,span=2,row=0}{
+\headerbox{SIFT Features}{name=results,column=2,span=1,row=0}{
 
-\begin{multicols}{2}
 \vspace{1em}
 \begin{center}
 \includegraphics[width=0.8\linewidth]{placeholder}
@@ -121,20 +121,7 @@ where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix.
 \end{center}
 
 Aliquam auctor, metus id ultrices porta, risus enim cursus sapien, quis iaculis sapien tortor sed odio. Mauris ante orci, euismod vitae tincidunt eu, porta ut neque. Aenean sapien est, viverra vel lacinia nec, venenatis eu nulla. Maecenas ut nunc nibh, et tempus libero. Aenean vitae risus ante. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing.
-\end{multicols}
 
-%------------------------------------------------
-
-\begin{multicols}{2}
-\vspace{1em}
-Sed fringilla tempus hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam ut elit sit amet metus lobortis consequat sit amet in libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel sem magna. Nunc at convallis urna. isus ante. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing. Quisque vestibulum eros eu.
-
-\begin{center}
-\includegraphics[width=0.8\linewidth]{placeholder}
-\captionof{figure}{Figure caption}
-\end{center}
-
-\end{multicols}
 }
 
 %----------------------------------------------------------------------------------------
@@ -148,26 +135,24 @@ Sed fringilla tempus hendrerit. Vestibulum ante ipsum primis in faucibus orci lu
 \small{ % Reduce the font size in this block
 \bibliographystyle{unsrt}
 \bibliography{cde_poster} % Use sample.bib as the bibliography file
+\vspace{1em}
 }}
 
 %----------------------------------------------------------------------------------------
 %	FUTURE RESEARCH
 %----------------------------------------------------------------------------------------
 
-\headerbox{Future Research}{name=futureresearch,column=1,span=2,aligned=references,above=bottom}{ % This block is as tall as the references block
+\headerbox{Future Research}{name=futureresearch,column=1,span=1,aligned=references,above=bottom}{ % This block is as tall as the references block
 
-\begin{multicols}{2}
 Integer sed lectus vel mauris euismod suscipit. Praesent a est a est ultricies pellentesque. Donec tincidunt, nunc in feugiat varius, lectus lectus auctor lorem, egestas molestie risus erat ut nibh.
-
-Maecenas viverra ligula a risus blandit vel tincidunt est adipiscing. Suspendisse mollis iaculis sem, in \emph{imperdiet} orci porta vitae. Quisque id dui sed ante sollicitudin sagittis.
-\end{multicols}
+\vspace{1em}
 }
 
 %----------------------------------------------------------------------------------------
 %	CONTACT INFORMATION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Contact Information}{name=contact,column=3,aligned=references,above=bottom}{ % This block is as tall as the references block
+\headerbox{Contact Information}{name=contact,column=2,aligned=references,above=bottom}{ % This block is as tall as the references block
 
 \begin{description}\compresslist
 \item[Web] http://www.digital-entertainment.org
@@ -183,29 +168,7 @@ Maecenas viverra ligula a risus blandit vel tincidunt est adipiscing. Suspendiss
 %	CONCLUSION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Visual Understanding 2}{name=conclusion,column=2,span=2,row=0,below=results,above=references}{
-
-\begin{multicols}{2}
-
-\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=2cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse, fill=red!20, node distance=3cm, minimum height=2em]
-
-\begin{tikzpicture}[node distance = 2cm, auto]
-\node [block] (init) {Initialize Model};
-\node [cloud, left of=init] (Start) {Start};
-\node [cloud, right of=init] (Start2) {Start Two};
-\node [block, below of=init] (init2) {Initialize Two};
-\node [decision, below of=init2] (End) {End};
-\path [line] (init) -- (init2);
-\path [line] (init2) -- (End);
-\path [line, dashed] (Start) -- (init);
-\path [line, dashed] (Start2) -- (init);
-\path [line, dashed] (Start2) |- (init2);
-\end{tikzpicture}
-
-%------------------------------------------------
+\headerbox{Visual Understanding 2}{name=conclusion,column=2,span=1,row=0,below=results,above=references}{
 
 \begin{itemize}\compresslist
 \item Pellentesque eget orci eros. Fusce ultricies, tellus et pellentesque fringilla, ante massa luctus libero, quis tristique purus urna nec nibh. Phasellus fermentum rutrum elementum. Nam quis justo lectus.
@@ -214,7 +177,6 @@ Maecenas viverra ligula a risus blandit vel tincidunt est adipiscing. Suspendiss
 \item Nunc at convallis urna. isus ante. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing.
 \end{itemize}
 
-\end{multicols}
 }
 
 %----------------------------------------------------------------------------------------
