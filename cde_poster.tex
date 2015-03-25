@@ -23,6 +23,10 @@
 \usepackage{graphicx} % Required for including images
 \graphicspath{{figures/}} % Directory in which figures are stored
 
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
 \usepackage{amsmath} % For typesetting math
 \usepackage{amssymb} % Adds new symbols to be used in math mode
 
@@ -103,8 +107,12 @@ where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix.
 %----------------------------------------------------------------------------------------
 
 \headerbox{Fonts Regression}{name=introduction,column=1,row=0,bottomaligned=objectives}{
+\includegraphics[trim = 120mm 20mm 120mm 20mm, clip, width=0.28\linewidth]{font1}
+\includegraphics[trim = 120mm 20mm 120mm 20mm, clip,width=0.28\linewidth]{font2}
+\includegraphics[trim = 120mm 20mm 0mm 20mm, clip,width=0.40\linewidth]{font3}
+A Gaussian process is a random process, that can be considered as an infinite-dimensional generalisation of the multivariate Gaussian distribution. The main assumption of the Gaussian process modelling is that our data can be represented as a sample from a multivariate normal distribution. Each time a Gaussian process is used to model some data, a kernel has to be chosen, and its parameters tuned to maximise the likelihood. \\
 
-
+Even with very few training examples, the Gaussian process model gives a reasonable prediction of the shape of a font. The best results were achieved using an exponential kernel with an optimised length scale and variance.
 }
 
 %----------------------------------------------------------------------------------------
