@@ -26,6 +26,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{epstopdf}
 
 \usepackage{amsmath} % For typesetting math
 \usepackage{amssymb} % Adds new symbols to be used in math mode
@@ -124,12 +125,6 @@ Even with very few training examples, the Gaussian process model gives a reasona
 
 \headerbox{SIFT Features}{name=results,column=2,span=1,row=0}{
 
-\vspace{1em}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{placeholder}
-\captionof{figure}{SIFT feature matching.}
-\end{center}
-
 Being able to detect features in an image that are invariant to scale, rotation, translation and changes in illumination has several applications.
 SIFT features achieves the scale invariance through extrema detection in a difference of Gaussians pyramid built with the image, while the rotation dealt with an orientation assignment based on local image properties.
 
@@ -179,13 +174,28 @@ Integer sed lectus vel mauris euismod suscipit. Praesent a est a est ultricies p
 %	CONCLUSION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Visual Understanding 2}{name=conclusion,column=2,span=1,row=0,below=results,above=references}{
+\headerbox{Performance-driven Facial Animation}{name=conclusion,column=2,span=1,row=0,below=results,above=references}{
+
+\begin{center}
+\includegraphics[width=0.5\linewidth]{facecapture}
+\captionof{figure}{Linkage simulation with trace.}
+\end{center}
+
+\begin{center}
+\includegraphics[width=0.8\linewidth]{stereoface}
+\captionof{figure}{Linkage simulation with trace.}
+\end{center}
+
+A facial performance was captured using stereo cameras and by tracking markers on the face.
+
+
+\begin{center}
+\includegraphics[width=0.4\linewidth]{face3d}
+\captionof{figure}{Linkage simulation with trace.}
+\end{center}
 
 \begin{itemize}\compresslist
 \item Pellentesque eget orci eros. Fusce ultricies, tellus et pellentesque fringilla, ante massa luctus libero, quis tristique purus urna nec nibh. Phasellus fermentum rutrum elementum. Nam quis justo lectus.
-\item Vestibulum sem ante, hendrerit a gravida ac, blandit quis magna.
-\item Donec sem metus, facilisis at condimentum eget, vehicula ut massa. Morbi consequat, diam sed convallis tincidunt, arcu nunc.
-\item Nunc at convallis urna. isus ante. Pellentesque condimentum dui. Etiam sagittis purus non tellus tempor volutpat. Donec et dui non massa tristique adipiscing.
 \end{itemize}
 
 }
