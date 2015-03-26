@@ -95,13 +95,14 @@ linewidth=2pt % Width of the border lines around content boxes
 
 Inverse kinematics uses a known end-effector position $\mathbf{E}$ to calculate the angles between the parts   $\boldsymbol\theta$ which ensure that the object reaches this desired target position, such that
 
-\begin{equation*}
-\begin{aligned}
-\mathbf{E} &= f(\boldsymbol\theta) \rightarrow \boldsymbol{\theta} = f^{-1}(\mathbf{E}) \\  \partial \mathbf{E} &\approx J(\boldsymbol\theta) \partial \boldsymbol\theta \rightarrow \partial \boldsymbol{\theta} \approx J^{+}(\partial\mathbf{E}),
-\end{aligned}
-\end{equation*}
 
 where $f$ is the forward kinematics solver, $J$ is the Jacobian matrix and $J^+ = (J^T J)^{-1}J^T$ is the pseudoinverse of $J$.
+\begin{equation*}
+\begin{aligned}
+\mathbf{E} &= f(\boldsymbol\theta) \rightarrow \boldsymbol{\theta} = f^{-1}(\mathbf{E}) \\  \partial \mathbf{E} &\approx J(\boldsymbol\theta) \partial \boldsymbol\theta \rightarrow \partial \boldsymbol{\theta} \approx J^{-1}(\partial\mathbf{E}),
+\end{aligned}
+\end{equation*}
+where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix.
 
 \vspace{0.3em} % When there are two boxes, some whitespace may need to be added if the one on the right has more content
 }
@@ -205,27 +206,14 @@ A facial performance was captured using stereo cameras and by tracking markers o
 %----------------------------------------------------------------------------------------
 
 \headerbox{Shape interpolation}{name=method,column=0,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
-
-The following materials were required to complete the research:
-
-\begin{itemize}\compresslist
-\item Curabitur pellentesque dignissim
-\item Eu facilisis est tempus quis
-\item Duis porta consequat lorem
-\item Eu facilisis est tempus quis
-\end{itemize}
-
-The following equations were used for statistical analysis:
-
+Alexa et al~\cite{Alexa:2000} introduced a transformation-based interpolation technique, that aims to preserve the structure of the parts that are only translated or rotated between the two meshes. For each triangle the transformation \(mathbf{A}\) is split into rotation and translation/shearing; then the angles and the scale/shearing are transformed linearly. The mapping that is close to \(\mathbf{a}\) and that transforms the vertices smoothly is found by minimising the error:
 \begin{equation}
-\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
-\label{eq:refname}
-\end{equation}\
-
+	E_{V(t)} = \sum_{T \in \mathcal{T}} || A_T(t) - B_T(t)||^2_F,\label{eq:error}
+\end{equation} 
+where \(\mathcal{T}\) is the triangulation, and \(|| \cdot ||^2_F = \sum_{i=1}^m \sum_{j=1}^n |a_{ij}|^2\) is the Frobenius norm. The new transformation matrix \(B\) is defined in terms of the intermediate position of the vertices \(V(t) = (\mathbf{v}_1(t), \dots, \mathbf{v}_n(t))\) such that \(V(0)\) is the initial position of the vertices and \(V(1)\) is the final position. Consequently,
 \begin{equation}
-E = mc^{2}
-\label{eqn:Einstein}
-\end{equation}
+	B_T (t) \: \mathbf{p}_f + \mathbf{l} = \mathbf{v}_f(t), \: f \in \{i,j,k\}.\label{eq:B}
+\end{equation} 
 
 
 }
