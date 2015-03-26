@@ -83,7 +83,7 @@ linewidth=2pt % Width of the border lines around content boxes
 {\includegraphics[height=5em]{Bathlogo.jpg}} % Second university/lab logo on the right
 
 %----------------------------------------------------------------------------------------
-%	OBJECTIVES
+%	INVERSE KINEMATICS
 %----------------------------------------------------------------------------------------
 
 \headerbox{Inverse kinematics}{name=objectives,column=0,row=0}{
@@ -108,10 +108,10 @@ where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix.
 }
 
 %----------------------------------------------------------------------------------------
-%	INTRODUCTION
+%	FONT REGRESSION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Fonts Regression}{name=introduction,column=1,row=0,bottomaligned=objectives}{
+\headerbox{Font Regression}{name=introduction,column=1,row=0,bottomaligned=objectives}{
 \includegraphics[trim = 120mm 20mm 120mm 20mm, clip, width=0.28\linewidth]{font1}
 \includegraphics[trim = 120mm 20mm 120mm 20mm, clip,width=0.28\linewidth]{font2}
 \includegraphics[trim = 120mm 20mm 0mm 20mm, clip,width=0.40\linewidth]{font3}
@@ -121,7 +121,7 @@ Even with very few training examples, the Gaussian process model gives a reasona
 }
 
 %----------------------------------------------------------------------------------------
-%	RESULTS 1
+%	SIFT
 %----------------------------------------------------------------------------------------
 
 \headerbox{SIFT Features}{name=results,column=2,span=1,row=0}{
@@ -170,9 +170,8 @@ Integer sed lectus vel mauris euismod suscipit. Praesent a est a est ultricies p
 }
 
 
-
 %----------------------------------------------------------------------------------------
-%	CONCLUSION
+%	PERFORMANCE-DRIVEN FACIAL ANIMATION
 %----------------------------------------------------------------------------------------
 
 \headerbox{Performance-driven Facial Animation}{name=conclusion,column=2,span=1,row=0,below=results,above=references}{
@@ -202,7 +201,7 @@ A facial performance was captured using stereo cameras and by tracking markers o
 }
 
 %----------------------------------------------------------------------------------------
-%	MATERIALS AND METHODS
+%	SHAPE INTERPOLATION
 %----------------------------------------------------------------------------------------
 
 \headerbox{Shape interpolation}{name=method,column=0,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
@@ -210,7 +209,7 @@ Alexa et al~\cite{Alexa:2000} introduced a transformation-based interpolation te
 \begin{equation}
 	E_{V(t)} = \sum_{T \in \mathcal{T}} || A_T(t) - B_T(t)||^2_F,\label{eq:error}
 \end{equation} 
-where \(\mathcal{T}\) is the triangulation, and \(|| \cdot ||^2_F = \sum_{i=1}^m \sum_{j=1}^n |a_{ij}|^2\) is the Frobenius norm. The new transformation matrix \(B\) is defined in terms of the intermediate position of the vertices \(V(t) = (\mathbf{v}_1(t), \dots, \mathbf{v}_n(t))\) such that \(V(0)\) is the initial position of the vertices and \(V(1)\) is the final position. Consequently,
+where \(\mathcal{T}\) is the triangulation, and \(|| \cdot ||^2_F \) is the Frobenius norm. The new transformation matrix \(B\) is defined in terms of the intermediate position of the vertices \(V(t) = (\mathbf{v}_1(t), \dots, \mathbf{v}_n(t))\) such that \(V(0)\) is the initial position of the vertices and \(V(1)\) is the final position. Consequently,
 \begin{equation}
 	B_T (t) \: \mathbf{p}_f + \mathbf{l} = \mathbf{v}_f(t), \: f \in \{i,j,k\}.\label{eq:B}
 \end{equation} 
@@ -219,27 +218,12 @@ where \(\mathcal{T}\) is the triangulation, and \(|| \cdot ||^2_F = \sum_{i=1}^m
 }
 
 %----------------------------------------------------------------------------------------
-%	RESULTS 2
+%	3D RECONSTRUCTION
 %----------------------------------------------------------------------------------------
 
 \headerbox{3D Reconstruction}{name=results2,column=1,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
 
-Donec faucibus purus at tortor egestas eu fermentum dolor facilisis. Maecenas tempor dui eu neque fringilla rutrum. Mauris \emph{lobortis} nisl accumsan.
 
-\begin{center}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\captionof{table}{Table caption}
-\end{center}
-
-Nulla ut porttitor enim. Suspendisse venenatis dui eget eros gravida tempor. Mauris feugiat elit et augue placerat ultrices. Morbi accumsan enim nec tortor consectetur non commodo.
 
 }
 
