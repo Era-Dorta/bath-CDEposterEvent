@@ -23,6 +23,8 @@
 \usepackage{graphicx} % Required for including images
 \graphicspath{{figures/}} % Directory in which figures are stored
 
+\usepackage{wrapfig}
+
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -37,7 +39,7 @@
 \usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
 
 \usepackage{multicol} % Required for multiple columns
-\setlength{\columnsep}{1.5em} % Slightly increase the space between columns
+\setlength{\columnsep}{1.2em} % Slightly increase the space between columns
 \setlength{\columnseprule}{0mm} % No horizontal rule between columns
 
 \usepackage{tikz} % Required for flow chart
@@ -93,16 +95,13 @@ linewidth=2pt % Width of the border lines around content boxes
 \captionof{figure}{Linkage simulation with trace.}
 \end{center}
 
-Inverse kinematics uses a known end-effector position $\mathbf{E}$ to calculate the angles between the parts   $\boldsymbol\theta$ which ensure that the object reaches this desired target position, such that
-
-
-where $f$ is the forward kinematics solver, $J$ is the Jacobian matrix and $J^+ = (J^T J)^{-1}J^T$ is the pseudoinverse of $J$.
+Inverse kinematics uses a known end-effector position $\mathbf{E}$ to calculate the angles between the parts   $\boldsymbol\theta$ which ensure that the object reaches this desired target position, such that 
 \begin{equation*}
 \begin{aligned}
 \mathbf{E} &= f(\boldsymbol\theta) \rightarrow \boldsymbol{\theta} = f^{-1}(\mathbf{E}) \\  \partial \mathbf{E} &\approx J(\boldsymbol\theta) \partial \boldsymbol\theta \rightarrow \partial \boldsymbol{\theta} \approx J^{-1}(\partial\mathbf{E}),
 \end{aligned}
 \end{equation*}
-where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix.
+where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix, and $J^+ = (J^T J)^{-1}J^T$ is the pseudoinverse of $J$.
 
 \vspace{0.3em} % When there are two boxes, some whitespace may need to be added if the one on the right has more content
 }
@@ -111,13 +110,13 @@ where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix.
 %	FONT REGRESSION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Font Regression}{name=introduction,column=1,row=0,bottomaligned=objectives}{
+\headerbox{Gaussian Process}{name=introduction,column=1,row=0,span=1}{
 \includegraphics[trim = 120mm 20mm 120mm 20mm, clip, width=0.28\linewidth]{font1}
 \includegraphics[trim = 120mm 20mm 120mm 20mm, clip,width=0.28\linewidth]{font2}
-\includegraphics[trim = 120mm 20mm 0mm 20mm, clip,width=0.40\linewidth]{font3}
+\includegraphics[trim = 120mm 20mm 0mm 20mm, clip,width=0.41\linewidth]{font3}
 A Gaussian process is a random process, that can be considered as an infinite-dimensional generalisation of the multivariate Gaussian distribution. The main assumption of the Gaussian process modelling is that our data can be represented as a sample from a multivariate normal distribution. Each time a Gaussian process is used to model some data, a kernel has to be chosen, and its parameters tuned to maximise the likelihood. \\
 
-Even with very few training examples, the Gaussian process model gives a reasonable prediction of the shape of a font. The best results were achieved using an exponential kernel with an optimised length scale and variance.
+Even with very few training examples, the Gaussian process model gives a reasonable prediction of the shape of a font. The best results were achieved using an exponential kernel with an optimised length scale and variance. %
 }
 
 %----------------------------------------------------------------------------------------
@@ -137,7 +136,7 @@ SIFT features achieves the scale invariance through extrema detection in a diffe
 
 \headerbox{References}{name=references,column=0,above=bottom}{
 
-\renewcommand{\section}[2]{\vskip 0.05em} % Get rid of the default "References" section title
+\renewcommand{\section}[2]{\vskip 0.03em} % Get rid of the default "References" section title
 \nocite{*} % Insert publications even if they are not cited in the poster
 \small{ % Reduce the font size in this block
 \bibliographystyle{unsrt}
@@ -149,10 +148,8 @@ SIFT features achieves the scale invariance through extrema detection in a diffe
 %	FUTURE RESEARCH
 %----------------------------------------------------------------------------------------
 
-\headerbox{Future Research}{name=futureresearch,column=1,span=1,aligned=references,above=bottom}{ % This block is as tall as the references block
-
-Integer sed lectus vel mauris euismod suscipit. Praesent a est a est ultricies pellentesque. Donec tincidunt, nunc in feugiat varius, lectus lectus auctor lorem, egestas molestie risus erat ut nibh.
-\vspace{1em}
+\headerbox{Future Research}{name=futureresearch,column=1,span=1,above=bottom}{ % This block is as tall as the references block
+The students undertake an individual three-month summer project in a chosen research area before starting the industrial placement.
 }
 
 %----------------------------------------------------------------------------------------
@@ -177,7 +174,8 @@ Integer sed lectus vel mauris euismod suscipit. Praesent a est a est ultricies p
 \headerbox{Performance-driven Facial Animation}{name=conclusion,column=2,span=1,row=0,below=results,above=references}{
 
 \begin{center}
-\includegraphics[width=0.5\linewidth]{facecapture}
+\includegraphics[height=4cm]{facecapture}
+\includegraphics[height=4cm]{face3d}
 \captionof{figure}{Linkage simulation with trace.}
 \end{center}
 
@@ -189,11 +187,6 @@ Integer sed lectus vel mauris euismod suscipit. Praesent a est a est ultricies p
 A facial performance was captured using stereo cameras and by tracking markers on the face.
 
 
-\begin{center}
-\includegraphics[width=0.4\linewidth]{face3d}
-\captionof{figure}{Linkage simulation with trace.}
-\end{center}
-
 \begin{itemize}\compresslist
 \item Pellentesque eget orci eros. Fusce ultricies, tellus et pellentesque fringilla, ante massa luctus libero, quis tristique purus urna nec nibh. Phasellus fermentum rutrum elementum. Nam quis justo lectus.
 \end{itemize}
@@ -204,16 +197,13 @@ A facial performance was captured using stereo cameras and by tracking markers o
 %	SHAPE INTERPOLATION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Shape interpolation}{name=method,column=0,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
-Alexa et al~\cite{Alexa:2000} introduced a transformation-based interpolation technique, that aims to preserve the structure of the parts that are only translated or rotated between the two meshes. For each triangle the transformation \(mathbf{A}\) is split into rotation and translation/shearing; then the angles and the scale/shearing are transformed linearly. The mapping that is close to \(\mathbf{a}\) and that transforms the vertices smoothly is found by minimising the error:
-\begin{equation}
-	E_{V(t)} = \sum_{T \in \mathcal{T}} || A_T(t) - B_T(t)||^2_F,\label{eq:error}
-\end{equation} 
-where \(\mathcal{T}\) is the triangulation, and \(|| \cdot ||^2_F \) is the Frobenius norm. The new transformation matrix \(B\) is defined in terms of the intermediate position of the vertices \(V(t) = (\mathbf{v}_1(t), \dots, \mathbf{v}_n(t))\) such that \(V(0)\) is the initial position of the vertices and \(V(1)\) is the final position. Consequently,
-\begin{equation}
-	B_T (t) \: \mathbf{p}_f + \mathbf{l} = \mathbf{v}_f(t), \: f \in \{i,j,k\}.\label{eq:B}
-\end{equation} 
-
+\headerbox{Shape interpolation}{name=method,column=1,below=introduction}{%,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
+\includegraphics[width=\linewidth]{armadillo_rigid_new} \\
+Alexa et al~\cite{Alexa:2000} introduced a transformation-based interpolation technique, that aims to preserve the structure of the parts that are only translated or rotated between the two meshes. For each triangle the transformation \(\mathbf{A}\) is split into rotation and translation/shearing, both of which are interpolated linearly. The corresponding smooth transformation is estimates by minimising the error in Frobenius norm:
+\begin{equation*}
+	E_{V(t)} = \sum_{\Delta \in \mathcal{T}} || \mathbf{A}_T(t) - \mathbf{B}_T(t)||^2_F,
+\end{equation*} 
+where \(V(t)\) are the intermediate positions of vertices, \(\mathbf{A}\) is the ideal mapping, and \(\mathbf{B}\) is the actual affine transformation.
 
 }
 
@@ -221,7 +211,7 @@ where \(\mathcal{T}\) is the triangulation, and \(|| \cdot ||^2_F \) is the Frob
 %	3D RECONSTRUCTION
 %----------------------------------------------------------------------------------------
 
-\headerbox{3D Reconstruction}{name=results2,column=1,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
+\headerbox{3D Reconstruction}{name=results2,column=0,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
 
 
 
