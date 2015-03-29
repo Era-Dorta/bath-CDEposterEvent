@@ -32,6 +32,7 @@
 
 \usepackage{amsmath} % For typesetting math
 \usepackage{amssymb} % Adds new symbols to be used in math mode
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 \usepackage{booktabs} % Top and bottom rules for tables
 \usepackage{enumitem} % Used to reduce itemize/enumerate spacing
@@ -88,20 +89,20 @@ linewidth=2pt % Width of the border lines around content boxes
 %	INVERSE KINEMATICS
 %----------------------------------------------------------------------------------------
 
-\headerbox{Inverse kinematics}{name=objectives,column=0,row=0}{
+\headerbox{Inverse Kinematics}{name=objectives,column=0,row=0}{
 
 \begin{center}
 \includegraphics[width=0.8\linewidth]{chain3Dexamplev2}
-\captionof{figure}{Linkage simulation with trace.}
+\captionof{figure}{Interactive 3D linkage simulation with end-effector trace.}
 \end{center}
 
-Inverse kinematics uses a known end-effector position $\mathbf{E}$ to calculate the angles between the parts   $\boldsymbol\theta$ which ensure that the object reaches this desired target position, such that 
+Inverse kinematics uses a known end-effector position $\mathbf{E}$ to calculate the required angles $\boldsymbol\theta$ between the parts which ensure that the object reaches the desired target position, such that 
 \begin{equation*}
 \begin{aligned}
 \mathbf{E} &= f(\boldsymbol\theta) \rightarrow \boldsymbol{\theta} = f^{-1}(\mathbf{E}) \\  \partial \mathbf{E} &\approx J(\boldsymbol\theta) \partial \boldsymbol\theta \rightarrow \partial \boldsymbol{\theta} \approx J^{-1}(\partial\mathbf{E}),
 \end{aligned}
 \end{equation*}
-where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix, and $J^+ = (J^T J)^{-1}J^T$ is the pseudoinverse of $J$.
+where $f$ is the forward kinematics solver, $J$ is the Jacobian matrix, and $J^+ = (J^T J)^{-1}J^T$ is the pseudoinverse of $J$.
 
 % \vspace{0.3em} % When there are two boxes, some whitespace may need to be added if the one on the right has more content
 }
@@ -110,7 +111,7 @@ where $f$ is the forward kinematics solver and $J$ is the Jacobian matrix, and $
 %	FONT REGRESSION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Gaussian Process}{name=introduction,column=1,row=0,span=1}{
+\headerbox{Gaussian Processes}{name=introduction,column=1,row=0,span=1}{
 \includegraphics[trim = 120mm 20mm 120mm 20mm, clip, width=0.28\linewidth]{font1}
 \includegraphics[trim = 120mm 20mm 120mm 20mm, clip,width=0.28\linewidth]{font2}
 \includegraphics[trim = 120mm 20mm 0mm 20mm, clip,width=0.41\linewidth]{font3}
@@ -174,22 +175,24 @@ The students undertake an individual three-month summer project in a chosen rese
 \headerbox{Performance-driven Facial Animation}{name=conclusion,column=2,span=1,row=0,below=results,above=references}{
 
 \begin{center}
-\includegraphics[height=4cm]{facecapture}
-\includegraphics[height=4cm]{face3d}
-\captionof{figure}{Linkage simulation with trace.}
+\includegraphics[height=3.0cm]{facecapture}
+\captionof{figure}{Facial performance capture setup.}
 \end{center}
 
 \begin{center}
-\includegraphics[width=0.8\linewidth]{stereoface}
-\captionof{figure}{Linkage simulation with trace.}
+\includegraphics[width=1.0\linewidth]{faceprocess_jpg}
 \end{center}
 
-A facial performance was captured using stereo cameras and by tracking markers on the face.
+A facial performance was captured using calibrated stereo cameras and by tracking markers on the face. The marker positions produce a sparse 3D point cloud, which is in turn used to drive a high-resolution mesh. A new face $\mathbf{x^*}$ can be computed from the `neutral-face' plus a weighted combination of blend-shapes, where the required weights are found through optimisation
 
-
-\begin{itemize}\compresslist
-\item Pellentesque eget orci eros. Fusce ultricies, tellus et pellentesque fringilla, ante massa luctus libero, quis tristique purus urna nec nibh. Phasellus fermentum rutrum elementum. Nam quis justo lectus.
-\end{itemize}
+\begin{equation*}
+\mathbf{x^*} = \sum^N_{i=1} w_i \mathbf{x}_i
+\end{equation*}
+\vspace{-10pt}
+\begin{equation*}
+\mathbf{w} =
+\argmin_{\mathbf{w}} || \mathbf{x^*} - \sum^N_{i=1} w_i \mathbf{x}_i ||^2
+\end{equation*}
 
 }
 
@@ -197,7 +200,7 @@ A facial performance was captured using stereo cameras and by tracking markers o
 %	SHAPE INTERPOLATION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Shape interpolation}{name=method,column=1,below=introduction}{%,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
+\headerbox{Shape Interpolation}{name=method,column=1,below=introduction}{%,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
 \includegraphics[width=\linewidth]{armadillo_rigid_new} \\
 Alexa et al~\cite{Alexa:2000} introduced a transformation-based interpolation technique, that aims to preserve the structure of the parts that are only translated or rotated between the two meshes. For each triangle the transformation \(\mathbf{A}\) is split into rotation and translation/shearing, both of which are interpolated linearly. The corresponding smooth transformation is estimates by minimising the error in Frobenius norm:
 \begin{equation*}
