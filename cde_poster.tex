@@ -33,6 +33,7 @@
 \usepackage{amsmath} % For typesetting math
 \usepackage{amssymb} % Adds new symbols to be used in math mode
 \DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\vect}[1]{\mathbf{#1}}
 
 \usepackage{booktabs} % Top and bottom rules for tables
 \usepackage{enumitem} % Used to reduce itemize/enumerate spacing
@@ -93,7 +94,6 @@ linewidth=2pt % Width of the border lines around content boxes
 
 \begin{center}
 \includegraphics[width=0.8\linewidth]{chain3Dexamplev2}
-\captionof{figure}{Interactive 3D linkage simulation with end-effector trace.}
 \end{center}
 
 Inverse kinematics uses a known end-effector position $\mathbf{E}$ to calculate the required angles $\boldsymbol\theta$ between the parts which ensure that the object reaches the desired target position, such that 
@@ -115,9 +115,9 @@ where $f$ is the forward kinematics solver, $J$ is the Jacobian matrix, and $J^+
 \includegraphics[trim = 120mm 20mm 120mm 20mm, clip, width=0.28\linewidth]{font1}
 \includegraphics[trim = 120mm 20mm 120mm 20mm, clip,width=0.28\linewidth]{font2}
 \includegraphics[trim = 120mm 20mm 0mm 20mm, clip,width=0.41\linewidth]{font3}
-A Gaussian process is a random process, that can be considered as an infinite-dimensional generalisation of the multivariate Gaussian distribution. The main assumption of the Gaussian process modelling is that our data can be represented as a sample from a multivariate normal distribution. Each time a Gaussian process is used to model some data, a kernel has to be chosen, and its parameters tuned to maximise the likelihood. \\
+A Gaussian process is a random process, that can be considered as an infinite-dimensional generalisation of the multivariate Gaussian distribution. The main assumption of Gaussian process modelling is that our data can be represented as a sample from a multivariate normal distribution. Each time a Gaussian process is used to model some data, a kernel has to be chosen, and its parameters tuned to maximise the likelihood. \\
 
-Even with very few training examples, the Gaussian process model gives a reasonable prediction of the shape of a font. The best results were achieved using an exponential kernel with an optimised length scale and variance. %
+Even with very few training examples, the Gaussian process model gives a reasonable prediction of the shape of a font. The best results were achieved using an exponential kernel with optimised length scale and variance hyperparameters. %
 }
 
 %----------------------------------------------------------------------------------------
@@ -126,8 +126,8 @@ Even with very few training examples, the Gaussian process model gives a reasona
 
 \headerbox{SIFT Features}{name=results,column=2,span=1,row=0}{
 
-Being able to detect features in an image that are invariant to scale, rotation, translation and changes in illumination has several applications.
-SIFT features achieves the scale invariance through extrema detection in a difference of Gaussians pyramid built with the image, while the rotation dealt with an orientation assignment based on local image properties.
+Being able to detect features in an image that are invariant to scale, rotation, translation and changes in illumination has many applications, such as image stitching and 3D reconstruction.
+SIFT features achieve scale invariance through extrema detection in a difference of Gaussians pyramid built from the image, while the rotation dealt with an orientation assignment based on local image properties.
 
 }
 
@@ -176,7 +176,6 @@ The students undertake an individual three-month summer project in a chosen rese
 
 \begin{center}
 \includegraphics[height=3.0cm]{facecapture}
-\captionof{figure}{Facial performance capture setup.}
 \end{center}
 
 \begin{center}
@@ -202,7 +201,7 @@ A facial performance was captured using calibrated stereo cameras and by trackin
 
 \headerbox{Shape Interpolation}{name=method,column=1,below=introduction}{%,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
 \includegraphics[width=\linewidth]{armadillo_rigid_new} \\
-Alexa et al~\cite{Alexa:2000} introduced a transformation-based interpolation technique, that aims to preserve the structure of the parts that are only translated or rotated between the two meshes. For each triangle the transformation \(\mathbf{A}\) is split into rotation and translation/shearing, both of which are interpolated linearly. The corresponding smooth transformation is estimates by minimising the error in Frobenius norm:
+Alexa \textit{et al.} \cite{Alexa:2000} introduced a transformation-based interpolation technique that aims to preserve the structure of the parts that are only translated or rotated between the two meshes. For each triangle, the transformation \(\mathbf{A}\) is split into rotation and translation/shearing, both of which are interpolated linearly. The corresponding smooth transformation is estimated by minimising the error in Frobenius norm:
 \begin{equation*}
 	E_{V(t)} = \sum_{\Delta \in \mathcal{T}} || \mathbf{A}_T(t) - \mathbf{B}_T(t)||^2_F,
 \end{equation*} 
@@ -215,6 +214,29 @@ where \(V(t)\) are the intermediate positions of vertices, \(\mathbf{A}\) is the
 %----------------------------------------------------------------------------------------
 
 \headerbox{3D Reconstruction}{name=results2,column=0,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
+
+\begin{center}
+\includegraphics[height=2.4cm]{cubes}
+\includegraphics[height=2.4cm]{3dcube2}
+\end{center}
+
+A calibration cube is used to calibrate a pair of stereo cameras. The intrinsic matrix $\mathbf{K}$ and external parameters $\mathbf{R}$ and $\mathbf{t}$ can be recovered through decomposition of the projection matrices $\mathbf{P}$, where
+
+\begin{equation*}
+	\mathbf{u} = \mathbf{PX} = 
+  \vect{K}[\vect{R}|\vect{t}]
+    \mathbf{X} 		 
+\end{equation*}
+
+The fundamental matrix $\mathbf{F}$ encompasses the intrinsic geometry between two views of a scene and defines the epipolar constraint
+
+\begin{equation*}
+\vect{u'}^T \vect{Fu} = 0
+\end{equation*}
+
+We can compute epipolar lines in both views, and points which lie on epipolar lines are constrained to intersect at a point in 3D space.
+
+
 
 
 
