@@ -172,7 +172,7 @@ The students undertake an individual three-month summer project in a chosen rese
 %	PERFORMANCE-DRIVEN FACIAL ANIMATION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Performance-driven Facial Animation}{name=conclusion,column=2,span=1,row=0,below=results,above=references}{
+\headerbox{Performance-driven Facial Animation}{name=conclusion,column=2,span=1,row=0,below=results,above=contact}{
 
 \begin{center}
 \includegraphics[height=3.0cm]{facecapture}
@@ -182,12 +182,13 @@ The students undertake an individual three-month summer project in a chosen rese
 \includegraphics[width=1.0\linewidth]{faceprocess_jpg}
 \end{center}
 
-A facial performance was captured using calibrated stereo cameras and by tracking markers on the face. The marker positions produce a sparse 3D point cloud, which is in turn used to drive a high-resolution mesh. A new face $\mathbf{x^*}$ can be computed from the `neutral-face' plus a weighted combination of blend-shapes, where the required weights are found through optimisation
-
+A facial performance is captured using calibrated stereo cameras and tracking markers on the face. The marker positions produce a sparse 3D point cloud, which is in turn used to drive a high-resolution mesh. A new face $\mathbf{x^*}$ can be computed from the `neutral-face' plus a weighted combination of blend-shape faces 
+$\{ \mathbf{x}_i \}^N_{i=1}$, where the required weights $\vect{w} = \{w_1...w_N\}$ are found through an optimisation procedure
+\vspace{-10pt}
 \begin{equation*}
 \mathbf{x^*} = \sum^N_{i=1} w_i \mathbf{x}_i
 \end{equation*}
-\vspace{-10pt}
+\vspace{-15pt}
 \begin{equation*}
 \mathbf{w} =
 \argmin_{\mathbf{w}} || \mathbf{x^*} - \sum^N_{i=1} w_i \mathbf{x}_i ||^2
@@ -199,7 +200,7 @@ A facial performance was captured using calibrated stereo cameras and by trackin
 %	SHAPE INTERPOLATION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Shape Interpolation}{name=method,column=1,below=introduction}{%,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
+\headerbox{Shape Interpolation}{name=method,column=1,below=introduction,above=futureresearch}{%,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
 \includegraphics[width=\linewidth]{armadillo_rigid_new} \\
 Alexa \textit{et al.} \cite{Alexa:2000} introduced a transformation-based interpolation technique that aims to preserve the structure of the parts that are only translated or rotated between the two meshes. For each triangle, the transformation \(\mathbf{A}\) is split into rotation and translation/shearing, both of which are interpolated linearly. The corresponding smooth transformation is estimated by minimising the error in Frobenius norm:
 \begin{equation*}
@@ -213,7 +214,7 @@ where \(V(t)\) are the intermediate positions of vertices, \(\mathbf{A}\) is the
 %	3D RECONSTRUCTION
 %----------------------------------------------------------------------------------------
 
-\headerbox{3D Reconstruction}{name=results2,column=0,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
+\headerbox{3D Reconstruction}{name=results2,column=0,below=objectives,above=references}{ % This block's bottom aligns with the bottom of the conclusion block
 
 \begin{center}
 \includegraphics[height=2.4cm]{cubes}
