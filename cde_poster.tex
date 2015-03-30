@@ -124,12 +124,9 @@ Even with very few training examples, the Gaussian process model gives a reasona
 %	SIFT
 %----------------------------------------------------------------------------------------
 
-\headerbox{SIFT Features}{name=results,column=2,span=1,row=0}{
+%\headerbox{SIFT Features}{name=results,column=2,span=1,row=0}{
 
-Being able to detect features in an image that are invariant to scale, rotation, translation and changes in illumination has many applications, such as image stitching and 3D reconstruction.
-SIFT features achieve scale invariance through extrema detection in a difference of Gaussians pyramid built from the image, while the rotation dealt with an orientation assignment based on local image properties.
-
-}
+%}
 
 %----------------------------------------------------------------------------------------
 %	REFERENCES
@@ -172,7 +169,7 @@ The students undertake an individual three-month summer project in a chosen rese
 %	PERFORMANCE-DRIVEN FACIAL ANIMATION
 %----------------------------------------------------------------------------------------
 
-\headerbox{Performance-driven Facial Animation}{name=conclusion,column=2,span=1,row=0,below=results,above=references}{
+\headerbox{Performance-driven Facial Animation}{name=conclusion,column=2,span=1,row=0}{
 
 \begin{center}
 \includegraphics[height=3.0cm]{facecapture}
@@ -185,13 +182,31 @@ The students undertake an individual three-month summer project in a chosen rese
 A facial performance was captured using calibrated stereo cameras and by tracking markers on the face. The marker positions produce a sparse 3D point cloud, which is in turn used to drive a high-resolution mesh. A new face $\mathbf{x^*}$ can be computed from the `neutral-face' plus a weighted combination of blend-shapes, where the required weights are found through optimisation
 
 \begin{equation*}
-\mathbf{x^*} = \sum^N_{i=1} w_i \mathbf{x}_i
-\end{equation*}
-\vspace{-10pt}
-\begin{equation*}
+\mathbf{x^*} = \sum^N_{i=1} w_i \mathbf{x}_i \quad
 \mathbf{w} =
 \argmin_{\mathbf{w}} || \mathbf{x^*} - \sum^N_{i=1} w_i \mathbf{x}_i ||^2
 \end{equation*}
+
+%\begin{center}
+%\includegraphics[height=2.4cm]{cubes}
+%\includegraphics[height=2.4cm]{3dcube2}
+%\end{center}
+
+A calibration cube is used to calibrate a pair of stereo cameras. The intrinsic matrix $\mathbf{K}$ and external parameters $\mathbf{R}$ and $\mathbf{t}$ can be recovered through decomposition of the projection matrices $\mathbf{P}$, where
+
+\begin{equation*}
+	\mathbf{u} = \mathbf{PX} = 
+  \vect{K}[\vect{R}|\vect{t}]
+    \mathbf{X} 		 
+\end{equation*}
+
+The fundamental matrix $\mathbf{F}$ encompasses the intrinsic geometry between two views of a scene and defines the epipolar constraint
+
+\begin{equation*}
+\vect{u'}^T \vect{Fu} = 0
+\end{equation*}
+
+We can compute epipolar lines in both views, and points which lie on epipolar lines are constrained to intersect at a point in 3D space.
 
 }
 
@@ -210,36 +225,16 @@ where \(V(t)\) are the intermediate positions of vertices, \(\mathbf{A}\) is the
 }
 
 %----------------------------------------------------------------------------------------
-%	3D RECONSTRUCTION
+%	Skin rendering
 %----------------------------------------------------------------------------------------
-
-\headerbox{3D Reconstruction}{name=results2,column=0,below=objectives,bottomaligned=conclusion}{ % This block's bottom aligns with the bottom of the conclusion block
-
+%,bottomaligned=references
+\headerbox{Skin Rendering}{name=skinRendering,column=0,below=objectives}{ % This block's bottom aligns with the bottom of the conclusion block
 \begin{center}
-\includegraphics[height=2.4cm]{cubes}
-\includegraphics[height=2.4cm]{3dcube2}
+\includegraphics[width=0.9\linewidth]{posterImg}
 \end{center}
 
-A calibration cube is used to calibrate a pair of stereo cameras. The intrinsic matrix $\mathbf{K}$ and external parameters $\mathbf{R}$ and $\mathbf{t}$ can be recovered through decomposition of the projection matrices $\mathbf{P}$, where
-
-\begin{equation*}
-	\mathbf{u} = \mathbf{PX} = 
-  \vect{K}[\vect{R}|\vect{t}]
-    \mathbf{X} 		 
-\end{equation*}
-
-The fundamental matrix $\mathbf{F}$ encompasses the intrinsic geometry between two views of a scene and defines the epipolar constraint
-
-\begin{equation*}
-\vect{u'}^T \vect{Fu} = 0
-\end{equation*}
-
-We can compute epipolar lines in both views, and points which lie on epipolar lines are constrained to intersect at a point in 3D space.
-
-
-
-
-
+	Hertzmann \textit{et al.} \cite{Hertzmann:2001} introduced a method to apply filters to images based on a best approximate match and a best coherence match pixel search.
+	A high-resolution bump map $B'$ can be synthesized from a lower resolution $B$ and a pair of training samples $A$ and $A'$.
 }
 
 %----------------------------------------------------------------------------------------
